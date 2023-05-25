@@ -1,0 +1,28 @@
+form {
+  border: 2px solid #5dd0ecc9;
+  padding: 10px;
+  background-color: aliceblue;
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.name {
+  flex-grow: 1;
+  flex-basis: 160px;
+}
+.email {
+  flex-grow: 3;
+  flex-basis: 200px;
+}
+button {
+  flex-grow: 1;
+  flex-basis: 80px;
+  background-color: rgba(17, 190, 212, 0.319);
+  border-color: rgba(34, 120, 195, 0.425);
+  font-size: 16px;
+}
+input {
+  width: 95%;
+  height: 20px;
+}
