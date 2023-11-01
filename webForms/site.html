@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <form>
+    <form method="post" action="https://svuis.svuonline.org/SVUIS/login.php">
       <div class="name">
-        <p>Name:</p>
-        <div><input type="text" placeholder="John"></div>
+        <p>User Name:</p>
+        <div><input type="text" name="user_name" placeholder="Ismael"></div>
       </div>
-      <div class="email">
-        <p>Email:</p>
-        <div><input type="text" placeholder="John3611@web.de"></div>
+      <div class="password">
+        <p>Password:</p>
+        <div><input type="password" name="user_pass" placeholder="**************"></div>
       </div>
-      <button>Submit</button>
+      <input type="hidden" name="from_page" value="/SVUIS/index.php" >
+      <button type="submit">Submit</button>
     </form>
   </body>
 </html>
