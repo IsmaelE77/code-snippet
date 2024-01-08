@@ -1,32 +1,43 @@
 #lang sicp
+(define (sum-iter term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (+ result (term a)))))
+  (iter a 0))
 
-;(define (product term a next b)
-;  (if (> a b)
-;      1
-;      (* (term a)
-;         (product term (next a) next b))))
+(define (sum term a next b)
+  (if (> a b)
+      0
+      (+ (term a)
+         (sum term (next a) next b))))
+
+(define (product-iter term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (* a result))))
+  (iter a 1))
 
 (define (product term a next b)
-  (define (iter a res)
-    (if (> a b)
-        res
-        (iter (next a) (* res (term a)))))
-  (iter a 1))
-        
+  (if (> a b)
+      1
+      (* (term a)
+         (product term (next a) next b))))
 
-(define (factorial x)
-  (define (identity a) a)
-  (define (next a) (+ a 1))
-  (product identity 1 next x))
+(define (factorial n)
+  (define (identity x) x)
+  (define (add-one x) (+ x 1))
+  (product-iter identity 1 add-one n))
 
-(define (square x) (* x x))
+(factorial 5)
 
-(define (pie n)
-   (define (pi-term n) 
-   (if (even? n) 
-       (/ (+ n 2) (+ n 1)) 
-       (/ (+ n 1) (+ n 2))))
-  (define (add-2 x) (+ 2 x))
-  (* (product pi-term 1 inc n) 4))
+(define (wallis-product n)
+  (define (term n)
+    (* (/ (* 2 n)
+          (- (* 2 n) 1))
+       (/ (* 2 n)
+          (+ (* 2 n) 1))))
+  (product term 1.0 inc n))
 
-(pie 6)
+(* 2 (wallis-product 1000))
